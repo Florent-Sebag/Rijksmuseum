@@ -1,6 +1,6 @@
 package sebag.florent.data.repositories
 
-import sebag.florent.data.mappers.ArtRepositoryMapper
+import sebag.florent.data.repositories.mapper.ArtRepositoryMapper
 import sebag.florent.data.source.remote.api.ArtApiService
 import sebag.florent.domain.model.ArtModel
 import sebag.florent.domain.repositories.ArtRepository

@@ -1,4 +1,4 @@
-package sebag.florent.data.mappers
+package sebag.florent.data.repositories.mapper
 
 import sebag.florent.data.entities.ArtCollectionResponseEntity
 import sebag.florent.data.entities.ArtObjectResponseEntity
