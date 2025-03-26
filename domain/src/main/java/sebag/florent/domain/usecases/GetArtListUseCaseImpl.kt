@@ -8,5 +8,5 @@ class GetArtListUseCaseImpl(
 ) : GetArtListUseCase {
 
     override suspend fun invoke(page: Int, limit: Int): Result<List<ArtModel>> =
-        artRepository.getArtCollection()
+        artRepository.getArtList()
 }

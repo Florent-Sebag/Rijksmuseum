@@ -1,6 +1,6 @@
 package sebag.florent.data.repositories.mapper
 
-import sebag.florent.data.entities.ArtCollectionResponseEntity
+import sebag.florent.data.entities.ArtListResponseEntity
 import sebag.florent.data.entities.ArtObjectResponseEntity
 import sebag.florent.domain.model.ArtModel
 
@@ -12,7 +12,7 @@ class ArtRepositoryMapperImpl : ArtRepositoryMapper {
         //imageUrl = webImage?.url ?: ""
     )
 
-    override fun toModel(entity: ArtCollectionResponseEntity) : List<ArtModel> =
+    override fun toModel(entity: ArtListResponseEntity) : List<ArtModel> =
         entity.artObjects.map { artObject ->
             toModel(artObject)
         }

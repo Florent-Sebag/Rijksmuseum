@@ -30,6 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
@@ -37,4 +40,9 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     //implementation(libs.androidx.appcompat)
     implementation(libs.koin.android)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
