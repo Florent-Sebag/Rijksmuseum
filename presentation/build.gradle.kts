@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -37,7 +38,25 @@ android {
 
 dependencies {
 
+    implementation(project(":domain"))
+
     implementation(libs.androidx.core.ktx)
-    //implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompat)
+
+    //COMPOSE
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
+
+    //UI
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+
+    //MATERIAL
+    implementation(libs.material3)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.material.icons.extended)
+
+    //KOIN
     implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
 }
