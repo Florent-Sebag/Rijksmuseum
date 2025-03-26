@@ -1,10 +1,18 @@
 package sebag.florent.data.entities
 
+import com.google.gson.annotations.SerializedName
+
 data class ArtListResponseEntity(
-    val artObjects: List<ArtObjectResponseEntity>
+    @SerializedName("artObjects") val artObjects: List<ArtObjectResponseEntity>
 )
 
 data class ArtObjectResponseEntity(
-    val id: String,
-    val title: String
+    @SerializedName("objectNumber") val id: String,
+    @SerializedName("title") val title: String,
+    @SerializedName("webImage") val webImage: WebImageResponseEntity?,
+    @SerializedName("principalOrFirstMaker") val artist: String?
+)
+
+data class WebImageResponseEntity(
+    @SerializedName("url") val url: String
 )

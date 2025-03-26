@@ -1,15 +1,19 @@
 package sebag.florent.presentation.features.home
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import sebag.florent.domain.model.ArtModel
 import sebag.florent.domain.usecases.GetArtListUseCase
+import sebag.florent.presentation.model.ArtUiModel
 
 class HomeViewModel(
     private val getArtListUseCase: GetArtListUseCase
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(HomeState.Loading)
+    private val _state = MutableStateFlow<HomeState>(HomeState.Loading)
     val state = _state.asStateFlow()
 
     init {
@@ -25,6 +29,28 @@ class HomeViewModel(
     }
 
     private fun fetchArtList() {
-
+        viewModelScope.launch {
+            getArtListUseCase(0, 15).fold(
+                onSuccess = { artList ->
+                    updateState(HomeState.Success(artList.map {
+                        it.toUiArtModel()
+                    }))
+                },
+                onFailure = {
+                    updateState(HomeState.Error(it.message ?: "Unknown error"))
+                }
+            )
+        }
     }
+
+    private fun updateState(newState: HomeState) {
+        _state.value = newState
+    }
+
+    private fun ArtModel.toUiArtModel() = ArtUiModel(
+        id = this.id,
+        title = this.title,
+        imageUrl = this.imageUrl,
+        artist = this.artist
+    )
 }

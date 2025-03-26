@@ -33,7 +33,18 @@ fun HomeScreen(
             }
         }
         is HomeState.Success -> {
-            //Show list
+            Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
+                ) {
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text(state.artList[0].title)
+                }
+            }
         }
         is HomeState.Error -> {
             // Show error message
