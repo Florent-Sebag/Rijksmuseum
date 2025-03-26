@@ -5,20 +5,26 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
+import sebag.florent.domain.mock.DomainMockProvider
 import sebag.florent.domain.model.ArtModel
 import sebag.florent.domain.repositories.ArtRepository
 
+@RunWith(MockitoJUnitRunner::class)
 class GetArtDetailsUseCaseImplTest {
 
+    @Mock
     private lateinit var artRepository: ArtRepository
+
     private lateinit var useCase: GetArtDetailsUseCase
 
     @Before
     fun setUp() {
-        artRepository = mock()
         useCase = GetArtDetailsUseCaseImpl(artRepository)
     }
 
@@ -26,14 +32,12 @@ class GetArtDetailsUseCaseImplTest {
     fun `invoke should return ArtModel when repository success`() {
 
         runTest {
-            val artModelMock = ArtModel(id = "tmp")
-
             whenever(artRepository.getArtDetails(any()))
-                .thenReturn(Result.success(artModelMock))
+                .thenReturn(Result.success(DomainMockProvider.artMock))
 
             val result = useCase.invoke("tmp")
 
-            assertEquals(artModelMock, result.getOrNull())
+            assertEquals(DomainMockProvider.artMock, result.getOrNull())
         }
     }
 

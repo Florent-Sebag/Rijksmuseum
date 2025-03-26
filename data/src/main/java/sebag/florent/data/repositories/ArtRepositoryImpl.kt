@@ -10,10 +10,10 @@ class ArtRepositoryImpl(
     private val mapper: ArtRepositoryMapper
 ) : ArtRepository {
 
-    override suspend fun getArtCollection(): Result<List<ArtModel>> {
+    override suspend fun getArtList(): Result<List<ArtModel>> {
 
         return try {
-            val response = apiService.getArtCollection(0, 15)
+            val response = apiService.getArtList(0, 15)
             Result.success(mapper.toModel(response))
         } catch (e: Exception) {
             Result.failure(e)

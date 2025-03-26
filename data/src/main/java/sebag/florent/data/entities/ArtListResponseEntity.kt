@@ -1,6 +1,6 @@
 package sebag.florent.data.entities
 
-data class ArtCollectionResponseEntity(
+data class ArtListResponseEntity(
     val artObjects: List<ArtObjectResponseEntity>
 )
 

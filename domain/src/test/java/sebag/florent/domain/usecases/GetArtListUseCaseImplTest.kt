@@ -4,35 +4,38 @@ import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
-import org.mockito.kotlin.any
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
+import sebag.florent.domain.mock.DomainMockProvider
 import sebag.florent.domain.model.ArtModel
 import sebag.florent.domain.repositories.ArtRepository
 
+@RunWith(MockitoJUnitRunner::class)
 class GetArtListUseCaseImplTest {
 
+    @Mock
     private lateinit var artRepository: ArtRepository
+
     private lateinit var useCase: GetArtListUseCase
 
     @Before
     fun setUp() {
-        artRepository = mock()
         useCase = GetArtListUseCaseImpl(artRepository)
     }
 
     @Test
     fun `invoke should return ArtModel list when repository success`() {
         runTest {
-            val artModelMock = mock<List<ArtModel>>()
-
-            whenever(artRepository.getArtCollection()).thenReturn(
-                Result.success(artModelMock)
+            whenever(artRepository.getArtList()).thenReturn(
+                Result.success(DomainMockProvider.artListMock)
             )
 
             val result = useCase.invoke(0, 15)
 
-            assertEquals(artModelMock, result.getOrNull())
+            assertEquals(DomainMockProvider.artListMock, result.getOrNull())
         }
     }
 
@@ -41,7 +44,7 @@ class GetArtListUseCaseImplTest {
         runTest {
             val exception = mock<Exception>()
 
-            whenever(artRepository.getArtCollection())
+            whenever(artRepository.getArtList())
                 .thenReturn(Result.failure(exception))
 
             val result = useCase.invoke(0, 15)
