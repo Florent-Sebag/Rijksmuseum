@@ -25,9 +25,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import sebag.florent.presentation.model.ArtUiModel
 import coil.compose.AsyncImage
+import sebag.florent.presentation.features.home.HomeAction
 
 @Composable
-fun ArtListComposable(artList: List<ArtUiModel>) {
+fun ArtListComposable(
+    artList: List<ArtUiModel>,
+    onAction: (HomeAction) -> Unit
+) {
     val columns = if (artList.size > 1) 2 else 1
 
     LazyVerticalGrid(
@@ -37,19 +41,22 @@ fun ArtListComposable(artList: List<ArtUiModel>) {
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(artList) { art ->
-            ArtCard(art)
+            ArtCard(art, onAction)
         }
     }
 }
 
 @Composable
-fun ArtCard(art: ArtUiModel) {
+fun ArtCard(
+    art: ArtUiModel,
+    onAction: (HomeAction) -> Unit
+) {
     Card(
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(3f / 4f)
-            .clickable { /* Action on click */ },
+            .clickable { onAction(HomeAction.OnItemClicked(art.id)) },
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Column(
