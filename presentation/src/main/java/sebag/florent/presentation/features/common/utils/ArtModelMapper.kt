@@ -8,5 +8,5 @@ fun ArtModel.toUiArtModel() = ArtUiModel(
     title = this.title,
     imageUrl = this.imageUrl,
     artist = this.artist,
-    description = null
+    description = this.description
 )
