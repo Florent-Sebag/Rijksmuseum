@@ -60,4 +60,11 @@ dependencies {
     //KOIN
     implementation(libs.koin.android.v353)
     implementation(libs.koin.androidx.compose.v353)
+
+    //TESTS
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.androidx.core.testing)
 }

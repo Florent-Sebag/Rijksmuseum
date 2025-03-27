@@ -1,7 +1,7 @@
 package sebag.florent.data.repositories
 
 import sebag.florent.data.repositories.mapper.ArtRepositoryMapper
-import sebag.florent.data.source.remote.api.ArtApiService
+import sebag.florent.data.service.ArtApiService
 import sebag.florent.domain.model.ArtModel
 import sebag.florent.domain.repositories.ArtRepository
 
@@ -10,10 +10,10 @@ class ArtRepositoryImpl(
     private val mapper: ArtRepositoryMapper
 ) : ArtRepository {
 
-    override suspend fun getArtList(): Result<List<ArtModel>> {
+    override suspend fun getArtList(page: Int, limit: Int): Result<List<ArtModel>> {
 
         return try {
-            val response = apiService.getArtList(0, 15)
+            val response = apiService.getArtList(page, limit)
             Result.success(mapper.toModel(response))
         } catch (e: Exception) {
             Result.failure(e)

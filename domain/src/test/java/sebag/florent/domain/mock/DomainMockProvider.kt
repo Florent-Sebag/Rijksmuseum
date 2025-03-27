@@ -8,7 +8,8 @@ object DomainMockProvider {
         "1",
         "El pollo loco",
         null,
-        "Unknown Artist"
+        "Unknown Artist",
+        null
     )
 
     val artListMock = listOf(

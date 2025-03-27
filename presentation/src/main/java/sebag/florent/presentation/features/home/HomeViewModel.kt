@@ -5,9 +5,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import sebag.florent.domain.model.ArtModel
 import sebag.florent.domain.usecases.GetArtListUseCase
-import sebag.florent.presentation.model.ArtUiModel
+import sebag.florent.presentation.features.common.utils.toUiArtModel
 
 class HomeViewModel(
     private val getArtListUseCase: GetArtListUseCase,
@@ -47,12 +46,4 @@ class HomeViewModel(
     private fun updateState(newState: HomeState) {
         _state.value = newState
     }
-
-    private fun ArtModel.toUiArtModel() = ArtUiModel(
-        id = this.id,
-        title = this.title,
-        imageUrl = this.imageUrl,
-        artist = this.artist,
-        description = null
-    )
 }

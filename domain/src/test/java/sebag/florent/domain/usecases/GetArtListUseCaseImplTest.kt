@@ -7,6 +7,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import sebag.florent.domain.mock.DomainMockProvider
@@ -29,7 +30,7 @@ class GetArtListUseCaseImplTest {
     @Test
     fun `invoke should return ArtModel list when repository success`() {
         runTest {
-            whenever(artRepository.getArtList()).thenReturn(
+            whenever(artRepository.getArtList(any(), any())).thenReturn(
                 Result.success(DomainMockProvider.artListMock)
             )
 
@@ -44,7 +45,7 @@ class GetArtListUseCaseImplTest {
         runTest {
             val exception = mock<Exception>()
 
-            whenever(artRepository.getArtList())
+            whenever(artRepository.getArtList(any(), any()))
                 .thenReturn(Result.failure(exception))
 
             val result = useCase.invoke(0, 15)
