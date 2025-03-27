@@ -1,7 +1,9 @@
 package sebag.florent.presentation.features.details
 
 import androidx.compose.runtime.Composable
+import sebag.florent.presentation.features.commonui.ErrorComposable
 import sebag.florent.presentation.features.commonui.LoadingComposable
+import sebag.florent.presentation.features.details.ui.ArtDetailsComposable
 
 @Composable
 fun DetailsScreen(
@@ -14,15 +16,12 @@ fun DetailsScreen(
             LoadingComposable()
         }
         is DetailsState.Success -> {
-            ArtComposable()
+            ArtDetailsComposable(state.art)
         }
         is DetailsState.Error -> {
-            // Show error message
+            ErrorComposable {
+                onAction(DetailsAction.Retry)
+            }
         }
     }
-}
-
-@Composable
-fun ArtComposable() {
-
 }

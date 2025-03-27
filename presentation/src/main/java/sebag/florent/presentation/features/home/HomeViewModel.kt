@@ -21,10 +21,15 @@ class HomeViewModel(
     }
 
     fun onAction(action: HomeAction) {
-
+        when (action) {
+            is HomeAction.Retry -> {
+                fetchArtList()
+            }
+        }
     }
 
     private fun fetchArtList() {
+        updateState(HomeState.Loading)
         viewModelScope.launch {
             getArtListUseCase(0, 15).fold(
                 onSuccess = { artList ->
@@ -33,7 +38,7 @@ class HomeViewModel(
                     }))
                 },
                 onFailure = {
-                    updateState(HomeState.Error(it.message ?: "Unknown error"))
+                    updateState(HomeState.Error)
                 }
             )
         }
@@ -47,6 +52,7 @@ class HomeViewModel(
         id = this.id,
         title = this.title,
         imageUrl = this.imageUrl,
-        artist = this.artist
+        artist = this.artist,
+        description = null
     )
 }

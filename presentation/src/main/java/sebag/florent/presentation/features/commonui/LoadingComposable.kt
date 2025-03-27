@@ -21,18 +21,18 @@ fun LoadingComposable() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background), // Respecte le thème
+            .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             CircularProgressIndicator(
-                modifier = Modifier.size(60.dp), // Taille personnalisée
-                color = MaterialTheme.colorScheme.primary, // Utilise la couleur principale du thème
-                strokeWidth = 6.dp // Épaisseur du cercle
+                modifier = Modifier.size(60.dp),
+                color = MaterialTheme.colorScheme.primary,
+                strokeWidth = 6.dp
             )
-            Spacer(modifier = Modifier.height(16.dp)) // Espace entre le loader et le texte
+            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Loading...",
                 style = MaterialTheme.typography.bodyLarge,

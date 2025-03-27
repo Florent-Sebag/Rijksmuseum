@@ -22,9 +22,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import sebag.florent.presentation.model.ArtUiModel
 import coil.compose.AsyncImage
 import sebag.florent.presentation.features.home.HomeAction
+import sebag.florent.presentation.model.ArtUiModel
 import sebag.florent.presentation.navigation.NavigationRoute
 
 @Composable
