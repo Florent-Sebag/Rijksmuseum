@@ -1,4 +1,4 @@
-package sebag.florent.presentation.features.commonui
+package sebag.florent.presentation.features.common.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

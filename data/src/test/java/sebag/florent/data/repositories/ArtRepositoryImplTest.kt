@@ -11,11 +11,12 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import retrofit2.HttpException
+import sebag.florent.data.entities.ArtDetailResponseEntity
 import sebag.florent.data.entities.ArtListResponseEntity
 import sebag.florent.data.entities.ArtObjectResponseEntity
 import sebag.florent.data.mock.DataMockProvider
 import sebag.florent.data.repositories.mapper.ArtRepositoryMapper
-import sebag.florent.data.source.remote.api.ArtApiService
+import sebag.florent.data.service.ArtApiService
 import sebag.florent.domain.repositories.ArtRepository
 
 @RunWith(MockitoJUnitRunner::class)
@@ -42,7 +43,7 @@ class ArtRepositoryImplTest {
             whenever(mapper.toModel(any<ArtListResponseEntity>()))
                 .thenReturn(DataMockProvider.artListMock)
 
-            val result = repository.getArtList()
+            val result = repository.getArtList(0, 15)
 
             assert(result.isSuccess)
             assertEquals(DataMockProvider.artListMock, result.getOrNull())
@@ -57,7 +58,7 @@ class ArtRepositoryImplTest {
             whenever(service.getArtList(any(), any()))
                 .thenThrow(exception)
 
-            val result = repository.getArtList()
+            val result = repository.getArtList(0, 15)
 
             assert(result.isFailure)
             assertEquals(exception, result.exceptionOrNull())
@@ -70,7 +71,7 @@ class ArtRepositoryImplTest {
             whenever(service.getArtDetails(any())).thenReturn(
                 DataMockProvider.artDetailResponseEntityMock
             )
-            whenever(mapper.toModel(any<ArtObjectResponseEntity>())).thenReturn(
+            whenever(mapper.toModel(any<ArtDetailResponseEntity>())).thenReturn(
                 DataMockProvider.artMock
             )
 

@@ -1,11 +1,10 @@
-package sebag.florent.data.source.remote.api
+package sebag.florent.data.service
 
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 import sebag.florent.data.entities.ArtDetailResponseEntity
 import sebag.florent.data.entities.ArtListResponseEntity
-import sebag.florent.data.entities.ArtObjectResponseEntity
 
 interface ArtApiService {
 

@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import sebag.florent.data.source.remote.api.ArtApiService
+import sebag.florent.data.service.ArtApiService
 
 val RetrofitModule = module {
     single {

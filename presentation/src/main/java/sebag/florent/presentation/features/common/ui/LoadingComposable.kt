@@ -1,4 +1,4 @@
-package sebag.florent.presentation.features.commonui
+package sebag.florent.presentation.features.common.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

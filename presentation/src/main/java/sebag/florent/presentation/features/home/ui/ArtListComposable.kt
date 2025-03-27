@@ -24,7 +24,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import sebag.florent.presentation.features.home.HomeAction
-import sebag.florent.presentation.features.commonui.model.ArtUiModel
+import sebag.florent.presentation.features.common.model.ArtUiModel
 import sebag.florent.presentation.navigation.NavigationRoute
 
 @Composable

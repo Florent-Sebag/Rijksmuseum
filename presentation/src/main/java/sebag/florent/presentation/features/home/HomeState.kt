@@ -1,6 +1,6 @@
 package sebag.florent.presentation.features.home
 
-import sebag.florent.presentation.features.commonui.model.ArtUiModel
+import sebag.florent.presentation.features.common.model.ArtUiModel
 
 sealed class HomeState {
 

@@ -1,6 +1,6 @@
 package sebag.florent.presentation.features.details
 
-import sebag.florent.presentation.features.commonui.model.ArtUiModel
+import sebag.florent.presentation.features.common.model.ArtUiModel
 
 sealed class DetailsState {
 
