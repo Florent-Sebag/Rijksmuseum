@@ -10,7 +10,7 @@ import sebag.florent.domain.usecases.GetArtListUseCase
 import sebag.florent.presentation.model.ArtUiModel
 
 class HomeViewModel(
-    private val getArtListUseCase: GetArtListUseCase
+    private val getArtListUseCase: GetArtListUseCase,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<HomeState>(HomeState.Loading)
@@ -21,11 +21,7 @@ class HomeViewModel(
     }
 
     fun onAction(action: HomeAction) {
-        when (action) {
-            is HomeAction.OnItemClicked -> {
 
-            }
-        }
     }
 
     private fun fetchArtList() {

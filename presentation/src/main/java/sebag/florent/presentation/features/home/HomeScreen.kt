@@ -17,14 +17,15 @@ import sebag.florent.presentation.features.home.ui.ArtListComposable
 @Composable
 fun HomeScreen(
     state: HomeState,
-    onAction: (HomeAction) -> Unit
+    onAction: (HomeAction) -> Unit,
+    onNavigationRequested: (String) -> Unit
 ) {
     when (state) {
         is HomeState.Loading -> {
             LoadingComposable()
         }
         is HomeState.Success -> {
-            ArtListComposable(state.artList, onAction)
+            ArtListComposable(state.artList, onAction, onNavigationRequested)
         }
         is HomeState.Error -> {
             // Show error message

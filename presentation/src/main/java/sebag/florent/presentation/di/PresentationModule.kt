@@ -5,6 +5,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import sebag.florent.presentation.features.home.HomeViewModel
 
 val PresentationModule = module {
-
-    viewModel { HomeViewModel(get()) }
+    includes(
+        ViewModelModule
+    )
 }

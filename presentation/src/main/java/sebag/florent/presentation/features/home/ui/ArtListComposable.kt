@@ -1,6 +1,5 @@
 package sebag.florent.presentation.features.home.ui
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,11 +25,13 @@ import androidx.compose.ui.unit.dp
 import sebag.florent.presentation.model.ArtUiModel
 import coil.compose.AsyncImage
 import sebag.florent.presentation.features.home.HomeAction
+import sebag.florent.presentation.navigation.NavigationRoute
 
 @Composable
 fun ArtListComposable(
     artList: List<ArtUiModel>,
-    onAction: (HomeAction) -> Unit
+    onAction: (HomeAction) -> Unit,
+    onNavigationRequested: (String) -> Unit
 ) {
     val columns = if (artList.size > 1) 2 else 1
 
@@ -41,7 +42,7 @@ fun ArtListComposable(
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(artList) { art ->
-            ArtCard(art, onAction)
+            ArtCard(art, onAction, onNavigationRequested)
         }
     }
 }
@@ -49,14 +50,19 @@ fun ArtListComposable(
 @Composable
 fun ArtCard(
     art: ArtUiModel,
-    onAction: (HomeAction) -> Unit
+    onAction: (HomeAction) -> Unit,
+    onNavigationRequested: (String) -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(12.dp),
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(3f / 4f)
-            .clickable { onAction(HomeAction.OnItemClicked(art.id)) },
+            .clickable {
+                onNavigationRequested(
+                    NavigationRoute.Details.createRoute(art.id)
+                )
+           },
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Column(
