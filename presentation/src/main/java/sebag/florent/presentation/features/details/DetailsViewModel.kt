@@ -6,7 +6,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import sebag.florent.domain.model.ArtModel
 import sebag.florent.domain.usecases.GetArtDetailsUseCase
+import sebag.florent.presentation.model.ArtUiModel
 
 class DetailsViewModel(
     private val savedStateHandle: SavedStateHandle,
@@ -17,16 +19,46 @@ class DetailsViewModel(
     val state = _state.asStateFlow()
 
     init {
-        fetchArtDetails(savedStateHandle["itemId"])
-    }
-
-    private fun fetchArtDetails(itemId: String?) {
-        viewModelScope.launch {
-
-        }
+        initDetails()
     }
 
     fun onAction(action: DetailsAction) {
-
+        when (action) {
+            is DetailsAction.Retry -> {
+                initDetails()
+            }
+        }
     }
+
+    private fun initDetails() {
+        savedStateHandle.get<String>("itemId")?.let { itemId ->
+            fetchArtDetails(itemId)
+        } ?: updateState(DetailsState.Error)
+    }
+
+    private fun fetchArtDetails(itemId: String) {
+        updateState(DetailsState.Loading)
+        viewModelScope.launch {
+            getArtDetailsUseCase(itemId).fold(
+                onSuccess = { artDetails ->
+                    updateState(DetailsState.Success(artDetails.toUiArtModel()))
+                },
+                onFailure = {
+                    updateState(DetailsState.Error)
+                }
+            )
+        }
+    }
+
+    private fun updateState(newState: DetailsState) {
+        _state.value = newState
+    }
+
+    private fun ArtModel.toUiArtModel() = ArtUiModel(
+        id = this.id,
+        title = this.title,
+        imageUrl = this.imageUrl,
+        artist = this.artist,
+        description = this.description
+    )
 }
