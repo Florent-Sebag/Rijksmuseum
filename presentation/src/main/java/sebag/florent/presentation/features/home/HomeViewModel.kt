@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import sebag.florent.domain.model.ArtModel
 import sebag.florent.domain.usecases.GetArtListUseCase
-import sebag.florent.presentation.model.ArtUiModel
+import sebag.florent.presentation.features.commonui.model.ArtUiModel
 
 class HomeViewModel(
     private val getArtListUseCase: GetArtListUseCase,

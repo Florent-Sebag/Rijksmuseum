@@ -68,7 +68,7 @@ class ArtRepositoryImplTest {
     fun `getArtDetails should return ArtModel when service success`() {
         runTest {
             whenever(service.getArtDetails(any())).thenReturn(
-                DataMockProvider.artObjectResponseEntityMock
+                DataMockProvider.artDetailResponseEntityMock
             )
             whenever(mapper.toModel(any<ArtObjectResponseEntity>())).thenReturn(
                 DataMockProvider.artMock

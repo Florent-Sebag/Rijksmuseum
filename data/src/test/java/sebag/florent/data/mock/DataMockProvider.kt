@@ -1,5 +1,6 @@
 package sebag.florent.data.mock
 
+import sebag.florent.data.entities.ArtDetailResponseEntity
 import sebag.florent.data.entities.ArtListResponseEntity
 import sebag.florent.data.entities.ArtObjectResponseEntity
 import sebag.florent.domain.model.ArtModel
@@ -9,8 +10,11 @@ object DataMockProvider {
         "1",
         "El pollo loco",
         null,
+        null,
         null
     )
+
+    val artDetailResponseEntityMock = ArtDetailResponseEntity(artObjectResponseEntityMock)
 
     val artListResponseEntityMock = ArtListResponseEntity(
         listOf(
@@ -22,7 +26,8 @@ object DataMockProvider {
         "1",
         "El pollo loco",
         null,
-        "Unknown Artist"
+        "Unknown Artist",
+        null
     )
 
     val artListMock = listOf(

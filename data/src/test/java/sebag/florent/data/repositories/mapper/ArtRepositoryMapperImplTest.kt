@@ -29,4 +29,12 @@ class ArtRepositoryMapperImplTest {
 
         assertEquals(DataMockProvider.artListMock, result)
     }
+
+    @Test
+    fun `toModel should map ArtDetailResponseEntity to of ArtModel`() {
+
+        val result = mapper.toModel(DataMockProvider.artDetailResponseEntityMock)
+
+        assertEquals(DataMockProvider.artMock, result)
+    }
 }

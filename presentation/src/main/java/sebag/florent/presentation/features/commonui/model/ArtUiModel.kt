@@ -1,4 +1,4 @@
-package sebag.florent.presentation.model
+package sebag.florent.presentation.features.commonui.model
 
 data class ArtUiModel(
     val id: String,
