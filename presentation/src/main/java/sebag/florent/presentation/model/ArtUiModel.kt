@@ -1,6 +1,6 @@
-package sebag.florent.domain.model
+package sebag.florent.presentation.model
 
-data class ArtModel(
+data class ArtUiModel(
     val id: String,
     val title: String,
     val imageUrl: String?,

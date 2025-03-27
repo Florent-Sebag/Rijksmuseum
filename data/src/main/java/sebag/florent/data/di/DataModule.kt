@@ -1,7 +1,11 @@
 package sebag.florent.data.di
 
-val DataModule = listOf(
-    RepositoryModule,
-    RepositoryModule,
-    OkHttpModule
-)
+import org.koin.dsl.module
+
+val DataModule = module {
+    includes(
+        RepositoryModule,
+        OkHttpModule,
+        RetrofitModule
+    )
+}

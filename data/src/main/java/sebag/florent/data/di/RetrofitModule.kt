@@ -9,7 +9,7 @@ import sebag.florent.data.source.remote.api.ArtApiService
 val RetrofitModule = module {
     single {
         Retrofit.Builder()
-            .baseUrl("https://www.rijksmuseum.nl/api/en")
+            .baseUrl("https://www.rijksmuseum.nl/api/en/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(get<OkHttpClient>())
             .build()

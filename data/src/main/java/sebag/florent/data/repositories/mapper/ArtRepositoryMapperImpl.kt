@@ -9,7 +9,8 @@ class ArtRepositoryMapperImpl : ArtRepositoryMapper {
     override fun toModel(entity: ArtObjectResponseEntity) = ArtModel(
         id = entity.id,
         title = entity.title,
-        //imageUrl = webImage?.url ?: ""
+        imageUrl = entity.webImage?.url,
+        artist = entity.artist ?: "Unknown Artist"
     )
 
     override fun toModel(entity: ArtListResponseEntity) : List<ArtModel> =

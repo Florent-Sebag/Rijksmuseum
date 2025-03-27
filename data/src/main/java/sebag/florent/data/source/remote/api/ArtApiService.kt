@@ -8,13 +8,13 @@ import sebag.florent.data.entities.ArtObjectResponseEntity
 
 interface ArtApiService {
 
-    @GET("/collection")
+    @GET("collection")
     suspend fun getArtList(
         @Query("p") page: Int,
         @Query("ps") pageSize: Int
     ): ArtListResponseEntity
 
-    @GET("/{objectNumber}")
+    @GET("{objectNumber}")
     suspend fun getArtDetails(
         @Path("id") id: String
     ): ArtObjectResponseEntity

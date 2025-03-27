@@ -39,7 +39,7 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     //implementation(libs.androidx.appcompat)
-    implementation(libs.koin.android)
+    implementation(libs.koin.android.v353)
 
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
