@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Material3.DayNight"
         tools:targetApi="31" >
 
-        <activity android:name="sebag.florent.presentation.HostActivity"
+        <activity android:name="sebag.florent.presentation.host.HostActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

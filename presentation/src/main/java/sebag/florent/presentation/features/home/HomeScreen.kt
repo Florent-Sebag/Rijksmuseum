@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import sebag.florent.presentation.features.home.ui.ArtListComposable
 
 @Composable
 fun HomeScreen(
@@ -33,18 +34,7 @@ fun HomeScreen(
             }
         }
         is HomeState.Success -> {
-            Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp)
-                ) {
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Text(state.artList[0].title)
-                }
-            }
+            ArtListComposable(state.artList)
         }
         is HomeState.Error -> {
             // Show error message

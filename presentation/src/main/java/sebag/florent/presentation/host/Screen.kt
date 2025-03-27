@@ -1,4 +1,4 @@
-package sebag.florent.presentation.navigation
+package sebag.florent.presentation.host
 
 sealed class Screen(val route: String) {
     object Home : Screen("home")
